@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from trade.models.Detail import DetailModel
+from trade.models.Order import OrderModel
 from trade.models.Product import ProductModel
 from trade.serializers.Product import ProductSerializer, ProductHighDemandSerializer, NumberOfProductsInYearSerializer
 
