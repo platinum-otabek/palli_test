@@ -46,6 +46,8 @@ class BulkProductsView(APIView):
 
 class NumberOfProductsInYearView(APIView):
     def get(self, request):
-        products = DetailModel.objects.values('order__customer__country').annotate(Sum('quantity'))
+        products = DetailModel.objects.values('order__customer__country') \
+            .annotate(Sum('quantity'))
+        orders = OrderModel.objects.filter(id__in=products, date__range=["2022-01-01", "2022-12-31"])
         serializer = NumberOfProductsInYearSerializer(products, many=True)
         return Response(serializer.data)

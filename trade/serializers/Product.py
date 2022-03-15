@@ -10,8 +10,8 @@ class ProductSerializer(serializers.ModelSerializer):
 
 
 class ProductHighDemandSerializer(serializers.Serializer):
-    product__name = serializers.CharField(max_length=50)
-    quantity__sum = serializers.IntegerField()
+    product_name = serializers.CharField(source='product__name')
+    quantity_sum = serializers.IntegerField(source='quantity__sum')
 
 
 class BulkProductSerializer(serializers.ModelSerializer):
